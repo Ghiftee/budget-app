@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   load_and_authorize_resource
-  before_action :set_category, only: %i[show edit update destroy]
+  before_action :set_category, only: %i[show destroy]
 
   # GET /categories or /categories.json
   def index
@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
   end
 
   # GET /categories/1/edit
-  def edit; end
+  # def edit; end
 
   # POST /categories or /categories.json
   def create
@@ -27,19 +27,6 @@ class CategoriesController < ApplicationController
         format.html { redirect_to @category, notice: 'Category was successfully created.' }
       else
         format.html { render :new, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /categories/1 or /categories/1.json
-  def update
-    respond_to do |format|
-      if @category.update(category_params)
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
-        format.json { render :show, status: :ok, location: @category }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
   end

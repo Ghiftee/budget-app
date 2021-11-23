@@ -1,0 +1,12 @@
+<%= link_to category_url(category) do %>
+<div>
+	<%= image_tag(category.icon) %>
+	<div>
+		<div>
+			<h5><%= category.name %></h5>
+			<h6>$<%= category.total_amount %></h6>
+		</div>
+		<small><%= category.created_at.strftime("%d %b %Y") %></small>
+	</div>
+</div>
+<% end %>
