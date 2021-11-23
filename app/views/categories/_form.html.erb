@@ -1,17 +1,16 @@
-<%= form_with(model: category) do |form| %>
-  <% if category.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
-
-      <ul>
-        <% category.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<div>
+  <%= form_with(model: category) do |form| %>
+    <div class="header">
+      <%= link_to 'Back', categories_path %>
+      <div>
+        <h2 class="title">New Category</h2>
+      </div>
+      <%= form.submit "Save"%>
+    </div>
+    <%= render "devise/shared/error_messages", resource: category %>
+    <div>
+      <%= form.text_field :name, autocomplete: "name", placeholder: "Name", class: "input", required: true %>
+      <%= form.text_field :icon, autocomplete: "icon", placeholder: "Icon", class: "input", required: true %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
