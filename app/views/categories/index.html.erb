@@ -1,17 +1,23 @@
-<div>
-  <header class="header">
-    <button>
-      <span>menu</span>
-    </button>
+<p id="notice"><%= notice %></p>
+<header>
+  <nav>
+    <h1>Categories</h1>
+    <%= link_to "Log out", destroy_user_session_path, class: "action", method: :delete %>
+  </nav>
+</header>
+<ul class="category__list">
+  <% if @categories.empty? %>
     <div>
-      <h1>Categories</h1>
+      No categories for now
     </div>
-    <%= button_to destroy_user_session_url, method: :delete do %>
-      <span>logout</span>
+  <% else %>
+    <% @categories.each do |category| %>
+      <%= category.name %>
+      <%= category.icon %>
+      <%= category.total_amount %>
+      <%= category.created_at.strftime('%-d %h %Y')%>
     <% end %>
-  </header>
-  <%= render @categories %>
-</div>
-<footer>
-  <%= link_to 'Add a new category', new_category_path %>
-</footer>
+  <% end %>
+</ul>
+
+<%= link_to 'Add a new category', new_category_path %>
