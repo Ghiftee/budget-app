@@ -1,4 +1,4 @@
-class Transaction < ApplicationRecord
+class Activity < ApplicationRecord
   validates :name, :amount, presence: true
   validates :amount, numericality: { greater_than: 0 }
   belongs_to :author, class_name: 'User'
