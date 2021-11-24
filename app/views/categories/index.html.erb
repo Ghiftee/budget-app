@@ -12,10 +12,7 @@
     </div>
   <% else %>
     <% @categories.each do |category| %>
-      <%= category.name %>
-      <%= category.icon %>
-      <%= category.total_amount %>
-      <%= category.created_at.strftime('%-d %h %Y')%>
+      <%= render partial: 'category', locals: { category: category } %> 
     <% end %>
   <% end %>
 </ul>

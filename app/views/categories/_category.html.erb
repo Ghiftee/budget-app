@@ -1,0 +1,16 @@
+<%= link_to category_url(category) do %>
+  <li>
+    <div>
+      <div class="image">
+        <%= category.icon %>
+      </div>
+      <div>
+        <div>
+          <h5><%= category.name.capitalize %>
+          <span class="date"><%= category.created_at.strftime('%-d %h %Y')%></span>
+        </div>
+          <p class="amount">$<%= category.total_amount %></p>
+      </div>
+    </div>
+  </li>
+<%  end %>

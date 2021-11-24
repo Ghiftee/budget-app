@@ -9,7 +9,15 @@
 		<p>Gift Credit:</p>
 		<p>$<%= @category.total_amount %></p>
 	</div>
-	<%= render 'activities/index', locals: { activities: @activities } %>
+  <ul>
+  <% if @activities.empty? %>
+    <div>
+      No Transactions for now
+    </div>
+  <% else %>
+    <%= render 'activities/index', locals: { activities: @activities } %>
+  <% end %>
+</ul>
 </div>
 <footer>
   <%= link_to 'Add a new transaction', new_activity_path %>
