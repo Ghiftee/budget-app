@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
 
   # GET /activities or /activities.json
   def index
-    redirect_to categories_url
+    redirect_to categories_path
   end
 
   # GET /activities/new
@@ -18,7 +18,7 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
-        format.html { redirect_to @activity.categories.first.id, notice: 'Activity was successfully created.' }
+        format.html { redirect_to @activity.categories.first, notice: 'Transaction was successfully created.' }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

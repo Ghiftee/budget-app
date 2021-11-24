@@ -6,7 +6,7 @@
       </div>
       <%= form.submit "Save" %>
   </div>
-  <%= render "devise/shared/error_messages", resource: deal %>
+  <%= render "devise/shared/error_messages", resource: activity %>
   <div>
     <%= form.text_field :name, autofocus: true, placeholder: "Name", class: "input", required: true %>
     <%= form.number_field :amount, placeholder: "Amount", class: "input", required: true %>

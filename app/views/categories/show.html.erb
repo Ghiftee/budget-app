@@ -15,7 +15,9 @@
       No Transactions for now
     </div>
   <% else %>
-    <%= render 'activities/index', locals: { activities: @activities } %>
+    <% @activities.each do |activity| %>
+      <%= render partial: 'activities/index', locals: { activity: activity } %>
+    <% end %>
   <% end %>
 </ul>
 </div>
