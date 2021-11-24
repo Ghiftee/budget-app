@@ -1,6 +1,6 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.feature 'New Category', type: :feature do
+RSpec.feature 'Add Category', type: :feature do
   login_user
 
   given(:category) { FactoryBot.build(:category) }
