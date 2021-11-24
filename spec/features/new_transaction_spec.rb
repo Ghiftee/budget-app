@@ -1,10 +1,32 @@
-require "rails_helper"
+# require 'rails_helper'
 
-RSpec.feature 'New Transaction', type: :feature do
-  scenario 'I can see the username and password inputs and the Submit button' do
-    visit new_user_session_path
-    expect(page.has_field?('user_email')).to be true
-    expect(page.has_field?('user_password')).to be true
-    expect(page.has_button?('Log in')).to be true
-  end
-end
+# RSpec.feature 'Add Transaction', type: :feature do
+#   login_user
+
+#   background do
+#     @category = FactoryBot.create(:category, user: @user)
+#   end
+
+#   given(:activity) { FactoryBot.build(:activity) }
+
+#   scenario 'Transaction with valid inputs' do
+#     visit new_activity_path
+#     within 'form' do
+#       fill_in 'Name', with: activity.name
+#       fill_in 'Amount', with: activity.amount
+#       select @category.name
+#     end
+#     click_button 'Save'
+#     expect(page).to have_current_path category_path(@category)
+#   end
+
+#   scenario 'Category with invalid inputs' do
+#     visit new_activity_path
+#     within 'form' do
+#       fill_in 'Name', with: activity.name
+#       fill_in 'Amount', with: activity.amount
+#     end
+#     click_button 'Save'
+#     expect(page).to have_content "Categories can't be blank"
+#   end
+# end

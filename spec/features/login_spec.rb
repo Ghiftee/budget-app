@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Login', type: :feature do
+RSpec.feature 'Login/sign up', type: :feature do
   scenario 'I can see the username, password inputs and the Submit button' do
     visit new_user_session_path
     expect(page.has_field?('user_email')).to be true
