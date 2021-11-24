@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'Splash page', type: :feature do
-
   describe 'Splash page new user' do
     before do
       visit root_path
@@ -17,5 +16,4 @@ RSpec.feature 'Splash page', type: :feature do
       expect(current_path).to eq(new_user_registration_path)
     end
   end
-
 end
