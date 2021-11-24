@@ -1,9 +1,6 @@
 FactoryBot.define do
-  sequence :name do |n|
-    "User #{n}"
-  end
   factory :activity do
-    name
+    sequence(:name) { |n| "Activity #{n}" }
     amount { 20 }
     author
 
