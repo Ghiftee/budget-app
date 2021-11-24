@@ -1,10 +1,28 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.feature 'Transaction page', type: :feature do
-  scenario 'I can see the username and password inputs and the Submit button' do
-    visit new_user_session_path
-    expect(page.has_field?('user_email')).to be true
-    expect(page.has_field?('user_password')).to be true
-    expect(page.has_button?('Log in')).to be true
+  login_user
+
+  background do
+    @category = FactoryBot.create(:category, user: @user)
+    FactoryBot.build_list(:activity, 1, author: @user, category_ids: [@category.id])
+  end
+
+  scenario 'The user can see a list of transactions' do
+    visit category_path(@category)
+    @category.activities.each do |activity|
+      expect(page).to have_content activity.name
+    end
+  end
+
+  scenario 'The user can see the total amount for the category' do
+    visit category_path(@category)
+    expect(page).to have_content @category.total_amount
+  end
+
+  scenario 'The page has an add new transaction button' do
+    visit category_path(@category)
+    click_link 'Add a new transaction'
+    expect(page).to have_current_path(new_activity_path)
   end
 end

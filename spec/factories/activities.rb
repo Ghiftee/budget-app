@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :activity do
+    author {}
     sequence(:name) { |n| "Activity #{n}" }
     amount { 20 }
-    author
 
     factory :activity_with_categories do
       transient do
