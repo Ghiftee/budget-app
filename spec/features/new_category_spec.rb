@@ -1,10 +1,26 @@
 require "rails_helper"
 
 RSpec.feature 'New Category', type: :feature do
-  scenario 'I can see the username and password inputs and the Submit button' do
-    visit new_user_session_path
-    expect(page.has_field?('user_email')).to be true
-    expect(page.has_field?('user_password')).to be true
-    expect(page.has_button?('Log in')).to be true
+  login_user
+
+  given(:category) { FactoryBot.build(:category) }
+
+  scenario 'Category with valid inputs' do
+    visit new_category_path
+    within 'form' do
+      fill_in 'Name', with: category.name
+      fill_in 'Icon', with: category.icon
+    end
+    click_button 'Save'
+    expect(page).to have_current_path root_path
+  end
+
+  scenario 'Category with invalid inputs' do
+    visit new_category_path
+    within 'form' do
+      fill_in 'Name', with: category.name
+    end
+    click_button 'Save'
+    expect(page).to have_content "Icon can't be blank"
   end
 end
