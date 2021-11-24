@@ -34,7 +34,8 @@ RSpec.describe '/activities', type: :request do
       it 'creates a new Activity' do
         expect do
           post activities_url,
-               params: { activity: FactoryBot.attributes_for(:activity, category_ids: [FactoryBot.create(:category).id]) }
+               params: { activity: FactoryBot.attributes_for(:activity,
+                                                             category_ids: [FactoryBot.create(:category).id]) }
         end.to change(Activity, :count).by(1)
       end
     end
