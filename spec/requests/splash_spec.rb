@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe '/splash', type: :request do
+RSpec.describe 'Splash', type: :request do
   
 end
