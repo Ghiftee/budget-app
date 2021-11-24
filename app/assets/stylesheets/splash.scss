@@ -1,0 +1,19 @@
+.splash_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+  
+.splash_title {
+  margin: 15rem 0;
+  font-family: "Proxima Nova light";
+  font-size: 4rem;
+}
+  
+.splash_links {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  font-family: "Proxima Nova light";
+}
