@@ -13,28 +13,11 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/activities', type: :request do
-  # Activity. As you add validations to Activity, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
-  end
-
-  let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
-  end
+  login_user
 
   describe 'GET /index' do
     it 'renders a successful response' do
-      Activity.create! valid_attributes
-      get activities_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /show' do
-    it 'renders a successful response' do
-      activity = Activity.create! valid_attributes
-      get activity_url(activity)
+      get categories_path
       expect(response).to be_successful
     end
   end
@@ -46,84 +29,27 @@ RSpec.describe '/activities', type: :request do
     end
   end
 
-  describe 'GET /edit' do
-    it 'render a successful response' do
-      activity = Activity.create! valid_attributes
-      get edit_activity_url(activity)
-      expect(response).to be_successful
-    end
-  end
-
   describe 'POST /create' do
     context 'with valid parameters' do
       it 'creates a new Activity' do
         expect do
-          post activities_url, params: { activity: valid_attributes }
+          post activities_url,
+               params: { activity: FactoryBot.attributes_for(:activity, category_ids: [FactoryBot.create(:category).id]) }
         end.to change(Activity, :count).by(1)
-      end
-
-      it 'redirects to the created activity' do
-        post activities_url, params: { activity: valid_attributes }
-        expect(response).to redirect_to(activity_url(Activity.last))
       end
     end
 
     context 'with invalid parameters' do
-      it 'does not create a new Activity' do
+      it 'does not create a new activity' do
         expect do
-          post activities_url, params: { activity: invalid_attributes }
+          post activities_url, params: { activity: FactoryBot.attributes_for(:activity, name: nil) }
         end.to change(Activity, :count).by(0)
       end
 
-      it "renders a successful response (i.e. to display the 'new' template)" do
-        post activities_url, params: { activity: invalid_attributes }
-        expect(response).to be_successful
+      it "renders new page (i.e. to display the 'new' template)" do
+        post activities_url, params: { activity: FactoryBot.attributes_for(:activity, name: nil) }
+        expect(response).not_to be_successful
       end
-    end
-  end
-
-  describe 'PATCH /update' do
-    context 'with valid parameters' do
-      let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
-      end
-
-      it 'updates the requested activity' do
-        activity = Activity.create! valid_attributes
-        patch activity_url(activity), params: { activity: new_attributes }
-        activity.reload
-        skip('Add assertions for updated state')
-      end
-
-      it 'redirects to the activity' do
-        activity = Activity.create! valid_attributes
-        patch activity_url(activity), params: { activity: new_attributes }
-        activity.reload
-        expect(response).to redirect_to(activity_url(activity))
-      end
-    end
-
-    context 'with invalid parameters' do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
-        activity = Activity.create! valid_attributes
-        patch activity_url(activity), params: { activity: invalid_attributes }
-        expect(response).to be_successful
-      end
-    end
-  end
-
-  describe 'DELETE /destroy' do
-    it 'destroys the requested activity' do
-      activity = Activity.create! valid_attributes
-      expect do
-        delete activity_url(activity)
-      end.to change(Activity, :count).by(-1)
-    end
-
-    it 'redirects to the activities list' do
-      activity = Activity.create! valid_attributes
-      delete activity_url(activity)
-      expect(response).to redirect_to(activities_url)
     end
   end
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Splash', type: :request do
+RSpec.describe '/splash', type: :request do
   describe 'GET /index' do
     before(:each) do
       get root_path
