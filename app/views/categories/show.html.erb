@@ -4,16 +4,13 @@
     <div>
       <h1 class="title">Transactions</h1>
     </div>
-    <%= link_to "Delete", @category, method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class: 'button' do %>
-    <% end %>
   </header>
 	<div>
-		<p>Total Amount:</p>
+		<p>Gift Credit:</p>
 		<p>$<%= @category.total_amount %></p>
 	</div>
-	<div></div>
 	<%= render 'activities/index', locals: { activities: @activities } %>
 </div>
 <footer>
-  <%= link_to 'Add a new transaction', new_deal_path %>
+  <%= link_to 'Add a new transaction', new_activity_path %>
 </footer>
