@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :category do
     sequence(:name) { |n| "Category#{n}" }
-    icon { 'PO' }
+    icon { 'https://media.istockphoto.com/' }
     user
 
     factory :category_with_activities do
