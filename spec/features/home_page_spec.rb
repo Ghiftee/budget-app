@@ -8,7 +8,7 @@ RSpec.feature 'Home Page', type: :feature do
 
   scenario 'Once the user logs in, they see the categories/home page' do
     visit categories_path
-    expect(page).to have_content 'Categories'
+    expect(page).to have_content 'CATEGORIES'
   end
 
   scenario 'For each category, user can see name, icon, and total amount that belongs to a category' do
@@ -27,7 +27,7 @@ RSpec.feature 'Home Page', type: :feature do
 
   scenario 'The page has an add category button' do
     visit categories_path
-    click_link 'Add a new category'
+    click_link 'ADD A NEW CATEGORY'
     expect(page).to have_current_path(new_category_path)
   end
 end

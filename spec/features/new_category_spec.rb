@@ -11,7 +11,7 @@ RSpec.feature 'Add Category', type: :feature do
       fill_in 'Name', with: category.name
       fill_in 'Icon', with: category.icon
     end
-    click_button 'Save'
+    click_button 'SAVE'
     expect(page).to have_current_path root_path
   end
 
@@ -20,7 +20,7 @@ RSpec.feature 'Add Category', type: :feature do
     within 'form' do
       fill_in 'Name', with: category.name
     end
-    click_button 'Save'
+    click_button 'SAVE'
     expect(page).to have_content "Icon can't be blank"
   end
 end

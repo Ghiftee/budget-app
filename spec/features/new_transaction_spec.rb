@@ -16,7 +16,7 @@ RSpec.feature 'Add Transaction', type: :feature do
       fill_in 'Amount', with: activity.amount
       select @category.name
     end
-    click_button 'Save'
+    click_button 'SAVE'
     expect(page).to have_current_path category_path(@category)
   end
 
@@ -26,7 +26,7 @@ RSpec.feature 'Add Transaction', type: :feature do
       fill_in 'Name', with: activity.name
       fill_in 'Amount', with: activity.amount
     end
-    click_button 'Save'
+    click_button 'SAVE'
     expect(page).to have_content "Categories can't be blank"
   end
 end
