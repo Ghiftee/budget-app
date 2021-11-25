@@ -1,9 +1,9 @@
 <div>
-	<div>
+	<div class='m-2 p-4 card is-flex is-justify-content-space-between'>
 		<div>
-			<h5><%= activity.name %></h5>
-			<h6>$<%= activity.amount %></h6>
+			<h5 class='mb-2'><%= activity.name %></h5>
+			<small><%= activity.created_at.strftime("%d %b %Y") %></small>
 		</div>
-		<small><%= activity.created_at.strftime("%d %b %Y") %></small>
+		<h6 class='has-text-weight-semibold'>$<%= activity.amount %></h6>
 	</div>
 </div>
